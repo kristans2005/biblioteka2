@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .button1 {
+        @apply m-1 bg-purple-300 p-2 rounded hover:bg-purple-200 text-white font-bold;
+    }
+    .input-text{
+        @apply p-1 rounded border border-black;
+    }
+    
+    h1{
+        @apply font-bold text-2xl;
+    }
+    body{
+        @apply bg-gray-700;
+
+    }
+}

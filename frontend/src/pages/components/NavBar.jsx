@@ -27,7 +27,7 @@ function Navbar() {
     }, []);
 
     return (
-        <div className="bgColor1 p-2 grid grid-flow-col h-20 w-screen shadowTheme fixed top-0 z-30">
+        <nav className="bgColor1 p-2 grid grid-flow-col h-20 w-screen shadowTheme fixed top-0 z-30">
             <div className=" grid grid-flow-col auto-cols-max  content-center z-40">
             {buttons.map((button, index) => (
                 <div key={index}>
@@ -46,7 +46,7 @@ function Navbar() {
 
 
 
-        </div>
+        </nav>
         
     );
 }

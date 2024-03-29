@@ -1,37 +1,48 @@
--- CREATE DATABASE bliblioteka;
--- USE bliblioteka;
 
-/*
-CREATE TABLE gramata (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	bookname VARCHAR(90) NOT NULL, 
-	author VARCHAR(40) NOT NULL,
-	releaseDate INT NOT NULL,
-	isInStock BOOL NOT NULL
-);
-*/
+CREATE DATABASE IF NOT EXISTS library;
 
-/*
-ALTER TABLE gramata
-MODIFY releaseDate DATETIME NOT NULL;
-*/
+USE library;
 
-/*
-INSERT INTO gramata (bookname, author, releaseDate, isInStock)
-VALUE 
-("ManaDienasgramata", "biden", "2001", TRUE),
-("FNAF_TFTPP", "scott", "2022", TRUE),
-("idkWhatToPut", "ogaBooga", "2005", FALSE);
-*/
-
-
-CREATE TABLE user (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(90) NOT NULL, 
-	password VARCHAR(255) NOT NULL 	
+CREATE TABLE IF NOT EXISTS authors (
+    author_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    name VARCHAR(255) NOT NULL 
 );
 
+CREATE TABLE IF NOT EXISTS books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    author_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    publication_year INT NOT NULL,
+    image VARCHAR(255),
+    availability ENUM('Available', 'Not Available') DEFAULT 'Available',
+    FOREIGN KEY (author_id) REFERENCES authors(author_id)
+);
 
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    is_admin BOOLEAN NOT NULL DEFAULT FALSE,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS carts (
+    cart_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    user_id INT NOT NULL,
+    book_id INT NOT NULL,
+    quantity INT NOT NULL,
+    return_date DATE,
+    FOREIGN KEY (book_id) REFERENCES books(book_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
 
+-- INSERT INTO authors (name) VALUES
+-- ('F. Scott Fitzgerald'),
+-- ('Harper Lee'),
+-- ('Jane Austen'),
+-- ('J.D. Salinger'),
+-- ('J.R.R. Tolkien');
 
--- DROP TABLE gramata;
+-- INSERT INTO books (author_id, title, publication_year) VALUES
+-- (1, 'The Great Gatsby', 1925),
+-- (2, 'To Kill a Mockingbird', 1960),
+-- (3, 'Pride and Prejudice', 1813);

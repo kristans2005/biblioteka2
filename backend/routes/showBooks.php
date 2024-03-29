@@ -11,7 +11,7 @@ include("../dbConnection.class.php");
 include("../dbController.class.php");
 
 $db = new dbConnection;
-$dbConntroller = new DbController($db);
+$dbConntroller = new DbController($db); 
 $db->connection();
 
 echo json_encode($dbConntroller->returnBooks());

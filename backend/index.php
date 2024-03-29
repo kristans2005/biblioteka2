@@ -24,12 +24,4 @@ $books = $db->executePROT(" SELECT * FROM gramata ");
 
 echo json_encode($books);
 //header('Content-Type: application/json');
-
 */
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-$data = file_get_contents("php://input");
-$ddata = json_decode($data, true);
-//var_dump($ddata);    
-print_r(file_get_contents('php://input'));

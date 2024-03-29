@@ -3,18 +3,78 @@
 @tailwind utilities;
 
 @layer components {
+    
+    html[data-theme="light"] {
+        --primary-color: white;
+        --primary-color2: #f3f4f6;
+        --invert: 0%;
+        --text-color: black;
+        --hover: #4b5563;
+        --shadow-color1: rgba(0, 0, 0, 0.1);
+        --shadow-color2: rgba(0, 0, 0, 0.05);
+    }
+
+    html[data-theme="dark"] {
+        --primary-color: #4b5563;
+        --primary-color2: #374151;
+        --text-color: white;
+        --hover: #d1d5db;
+        --invert: 100%;
+        --shadow-color1: rgba(255, 255, 255, 0.1);
+        --shadow-color2: rgba(255, 255, 255, 0.05);
+    }
+
+    body {
+        background-color: var(--primary-color); 
+    }
+
+    .textColor {
+        color: var(--text-color);
+    }
+
+    p {
+        color: var(--text-color);
+    }
+
+    .hoverTextColor :hover{
+        color: var(--hover);
+    }
+
+    .bgColor1 {
+        background-color: var(--primary-color);
+    }
+
+    .bgColor2 {
+        background-color: var(--primary-color2); /* Corrected class name */
+    }
+    
+    .invertColor {
+        filter: invert(var(--invert));
+    }
+
+    .shadowTheme {
+        box-shadow: 0 10px 15px -3px var(--shadow-color1), 0 4px 6px -2px var(--shadow-color2);
+    }
+
+    .navBarBtn {
+        @apply font-bold text-xl m-2 text-center;
+        color: var(--text-color);
+    }
+
     .button1 {
         @apply m-1 bg-purple-300 p-2 rounded hover:bg-purple-200 text-white font-bold;
     }
-    .input-text{
+
+    .input-text {
         @apply p-1 rounded border border-black;
     }
-    
-    h1{
-        @apply font-bold text-2xl;
-    }
-    body{
-        @apply bg-gray-700;
 
+    h1 {
+        @apply font-bold text-2xl;
+        color: var(--text-color);   
     }
+    h2 {
+        color: var(--text-color);
+    }
+    
 }
